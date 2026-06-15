@@ -1,0 +1,19 @@
+{% extends "main.html" %}
+
+{% block head %}
+  <title> HomePage </title>
+{% endblock %}
+
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6 center">
+      <h1> Student Main Portal</h1>
+      <p>Start to code student portal registration, join us today for your online courses</p>
+      <button type="button" class="btn btn-primary">Get Started</button>
+    </div>
+    <div class="col-md-4 image">
+      <img src="{{ url_for ('static', filename='images/dictionary.png') }}" width="100%" alt="">
+    </div>
+  </div>
+{% endblock %}

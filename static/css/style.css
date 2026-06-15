@@ -1,0 +1,302 @@
+:root{
+  --primary-color: hsl(243, 31%, 28%);
+  --text-color: hsl(0, 0%, 100%);
+  --accent-color: hsl(36, 100%, 42%);
+}
+
+@media (prefers-color-scheme: dark) {
+  /* :root {
+    --primary-color: hsl(0, 4%, 89%);
+    --text-color: hsl(243, 31%, 28%);
+  } */
+}
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  background-color: var(--text-color);
+  color: var(--primary-color);
+  margin-bottom: 60px; /* Margin bottom by footer height */
+}
+
+/* Heading styles */
+
+nav.navbar{
+  background-color: var(--primary-color);
+  border-radius: 0px;
+}
+
+a.navbar-brand{
+  color: var(--text-color);
+  font-size: 2.5rem;
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+}
+
+.center{
+  height: 90dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 20px;
+}
+
+.center h1{
+  font-weight: 600;
+  font-size: 6rem;
+  padding-left: 20px;
+}
+
+.center p{
+  font-size: 2rem;
+  color: var(--accent-color);
+  display: flex;
+  justify-content: flex-end;
+  padding-left: 100px;
+}
+
+.center button{
+  width: 50%;
+  color: var(--accent-color);
+  background-color: var(--primary-color);
+  height: 50px;
+  margin-left: 100px;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.center button:hover{
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 989px){
+  .center{
+    height: fit-content;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .center h1{
+    font-size: 4.5rem;
+    text-align: center;
+    padding-left: 0;
+  }
+
+  .center p{
+    font-size: 1.5rem;
+    padding-left: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  } 
+
+  .center button{
+    margin-left: 0;
+    font-size: 1.5rem;
+    height: 40px;
+  }
+}
+
+
+
+/* Get Started styles */
+.form-signin-heading{
+  text-align: center;
+}
+
+.personal-info .upload{
+  display: block;
+  width: 100%;
+}
+
+.upload p{
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  font-size: 1.5rem;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.upload input{
+  width: 50%;
+}
+
+.radios{
+  width: 50%;
+  margin-top: 40px;
+}
+
+.col-md-6 #input-address{
+  height: 50px;
+  resize: none;
+}
+
+.form-signin{
+  height: 500px;
+  overflow-y: auto;
+}
+
+.academic-info{
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.academic-info h1{
+  text-align: left;
+}
+
+.academic-info p{
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  font-size: 1.5rem;
+  padding: 10px;
+  border-radius: 10px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.col-md-12.result{
+  padding: 0;
+} 
+
+.academic-info .colo-md-6 #wassce{
+  width: 100%;
+  display: block;
+}
+
+.submit-form{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.submit-form button{
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+  width: 30%;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 989px) {
+  .radios{
+    margin-top: 10px;
+  }
+
+  .flash_success, .flash_error{
+    font-size: 1.5rem;
+  }
+}
+
+
+
+
+
+.sidenav{
+  display: flex;
+  flex-direction: column;
+  border-right: 5px solid #0f0f0f;
+  padding: 10px;
+  height: 70vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.side-nav-links{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ssidenav > div{
+  margin-left: -20px;
+}
+
+.sidenav a{
+  color: #34325E;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.sidenav a:hover{
+  color: #0f0f0f;
+  transition: color 0.3s ease;
+}
+
+.sidenav .side-active{
+  color: #abc;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.main{
+  overflow: auto;
+  padding: 20px;
+  height: 100vh;
+}
+
+.flash_success{
+  color: #155724;
+  font-size: 2.5rem;
+}
+
+.flash_error{
+  color: #721c24;
+  font-size: 2.5rem;
+}
+
+
+
+.edit-meaning textarea{
+  resize: vertical;
+  min-width: 100%;
+  max-width: 100%;
+  max-height: 100px;
+  min-height: 50px;
+  font-size: 1.6rem;
+  padding: 10px;
+}
+
+
+
+
+/* Footer styles */
+
+footer.footer, nav.navbar{
+  font-family: 'Poppins', monospace, sans-serif;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px; /* Set the fixed height of the footer here */
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.footer p{
+  color: var(--text-color);
+}
