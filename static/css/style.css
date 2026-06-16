@@ -5,10 +5,10 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  /* :root {
+  :root {
     --primary-color: hsl(0, 4%, 89%);
     --text-color: hsl(243, 31%, 28%);
-  } */
+  }
 }
 
 
