@@ -4,13 +4,17 @@
   <title> HomePage </title>
 {% endblock %}
 
+{% block home_active %}
+ class='active'
+{% endblock %}
+
 
 {% block content %}
-  <div class="row">
+  <div class="row home">
     <div class="col-md-6 center">
       <h1> Student Main Portal</h1>
       <p>Start to code student portal registration, join us today for your online courses</p>
-      <button type="button" class="btn btn-primary">Get Started</button>
+      <button type="button" class="btn btn-primary" id="get-started-btn" href="{{ url_for('get_started')}} ">Get Started</button>
     </div>
     <div class="col-md-4 image">
       <img src="{{ url_for ('static', filename='images/dictionary.png') }}" width="100%" alt="">

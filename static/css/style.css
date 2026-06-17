@@ -21,7 +21,14 @@ html {
 body {
   background-color: var(--text-color);
   color: var(--primary-color);
-  margin-bottom: 60px; /* Margin bottom by footer height */
+  /*margin-bottom: 60px;  Margin bottom by footer height */
+  opacity: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+body.fade-out {
+    opacity: 0;
+    transform: translateY(30px); /* Optional: slides down slightly */
 }
 
 /* Heading styles */
@@ -38,19 +45,26 @@ a.navbar-brand{
   font-weight: bold;
 }
 
+/* Hompage stylings */
+.home{
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .center{
   height: 90dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding-left: 20px;
+  text-align: left;
+  padding-left: 100px;
 }
 
 .center h1{
+  width: 100%;
   font-weight: 600;
-  font-size: 6rem;
-  padding-left: 20px;
+  font-size: 5.5rem;
 }
 
 .center p{
@@ -58,7 +72,6 @@ a.navbar-brand{
   color: var(--accent-color);
   display: flex;
   justify-content: flex-end;
-  padding-left: 100px;
 }
 
 .center button{
@@ -66,7 +79,6 @@ a.navbar-brand{
   color: var(--accent-color);
   background-color: var(--primary-color);
   height: 50px;
-  margin-left: 100px;
   font-size: 2rem;
   font-weight: 600;
 }
@@ -78,8 +90,11 @@ a.navbar-brand{
 }
 
 @media screen and (max-width: 989px){
+  .home{
+    flex-direction: column-reverse;
+  }
   .center{
-    height: fit-content;
+    height: 30dvh;
     align-items: center;
     padding: 10px;
   }
@@ -87,7 +102,6 @@ a.navbar-brand{
   .center h1{
     font-size: 4.5rem;
     text-align: center;
-    padding-left: 0;
   }
 
   .center p{
@@ -106,8 +120,19 @@ a.navbar-brand{
 }
 
 
+@media screen and (min-width: 990px) and (max-width: 1080px){
+  .center h1{
+    font-size: 4rem;
+  }
+}
+
+
 
 /* Get Started styles */
+.form-signin::-webkit-scrollbar{
+  display: none;
+}
+
 .form-signin-heading{
   text-align: center;
 }
@@ -195,6 +220,12 @@ a.navbar-brand{
 }
 
 @media (max-width: 989px) {
+  .form-signin{
+    height: 100dvh;
+    overflow-y: auto;
+    margin-bottom: 100px;
+  }
+
   .radios{
     margin-top: 10px;
   }
@@ -208,7 +239,7 @@ a.navbar-brand{
 
 
 
-.sidenav{
+/* .sidenav{
   display: flex;
   flex-direction: column;
   border-right: 5px solid #0f0f0f;
@@ -252,7 +283,7 @@ a.navbar-brand{
   overflow: auto;
   padding: 20px;
   height: 100vh;
-}
+} */
 
 .flash_success{
   color: #155724;

@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, json, render_template, request
 
 app = Flask(__name__)
 
@@ -122,6 +122,22 @@ regions = list(districts_by_region.keys())
 def get_started():
     return render_template('getstarted.html', districts_by_region = districts_by_region, regions = regions)
 
+
+@app.route('/getstarted/register', methods = ['POST'])
+def register():
+    req = request.get_json()
+    firstName = req['firstName']
+    lastName = req['lastName']
+    email = req['email']
+    region = req['region']
+    district = req['district']
+
+    
+    return json.dumps({'message': 'successfully added'})
+
+@app.route('/getstarted/student_detail', methods = ['GET','POST'])
+def student_detail():
+    return render_template('students.html')
 
 
 if __name__ == '__main__':

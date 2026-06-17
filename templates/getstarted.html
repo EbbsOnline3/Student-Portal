@@ -4,13 +4,17 @@
   <title> Get Started Page </title>
 {% endblock %}
 
+{% block get_started_active %}
+ class='active'
+{% endblock %}
+
 {% block content %}
   <form action="#" method="post" class="form-signin">
     <h2 class="form-signin-heading">Student Portal Form</h2>
     <div class="personal-info">
       <div class="col-md-6 upload">
         <p>Peronal Information</p>
-        <label for="inputfile" class="">Choose file:</label>
+        <label for="inputfile" class="">Upload Image:</label>
         <input type="file" id="inputfile" class="form-control" placeholder="Email address" required autofocus>
       </div>
       <div class="col-md-6">
@@ -19,7 +23,7 @@
       </div>
       <div class="col-md-6">
         <label for="input-middle-name" class="">Middle Name:</label>
-        <input type="text" id="input-middle-name" class="form-control" placeholder="Middle name" required>
+        <input type="text" id="input-middle-name" class="form-control" placeholder="Middle name">
       </div>
       <div class="col-md-6">
         <label for="input-last-name" class="">Last Name:</label>
@@ -35,9 +39,9 @@
       </div>
       <div class="col-md-6 radios">
         <label for="male">Male</label>
-        <input type="radio" name="gender" id="male">
+        <input type="radio" name="gender" id='male' class="gender" value="male" required>
         <label for="female">Female</label>
-        <input type="radio" name="gender" id="female">
+        <input type="radio" name="gender" id='female' class="gender" value="female" required>
       </div>
       <div class="col-md-6">
         <label for="input-number">Phone Number:</label>
@@ -45,11 +49,11 @@
       </div>
       <div class="col-md-6">
         <label for="input-address">Address:</label>
-        <textarea id="input-address" class="form-control" placeholder="your address" required></textarea>
+        <textarea id="input-address" class="form-control" required placeholder="your address" ></textarea>
       </div>
       <div class="col-md-6">
         <label for="region">Select Region:</label>
-        <select name="region" class="form-control" id="region">
+        <select name="region" class="form-control" id="region" required>
           <option value="">-- Select Region --</option>
           {% for region in regions %}
             <option value="{{ region }}">
@@ -60,7 +64,7 @@
       </div>
       <div class="col-md-6">
         <label for="district">District:</label>
-        <select name="district" class="form-control" id="district">
+        <select name="district" class="form-control" id="district" required>
           <option value="">-- Select District --</option>
         </select>
       </div>
@@ -74,11 +78,11 @@
       <p>Academic Information</p>
       <div class="col-md-12 result"> 
         <label for="wassce">Exam Score:</label>
-        <input type="number" name="wassce" class="form-control" id="wassce" placeholder="input WASSCE result">
+        <input type="number" name="wassce" class="form-control" id="wassce" placeholder="input WASSCE result" required>
       </div>
     </div>
     <div class="submit-form">
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
     </div>
   </form>
 
@@ -104,4 +108,8 @@
       }
     });
   </script>
+
+  <div class="col-md-12 students-table">
+    <p><b>Info!</b> All students records table</p>
+  </div>
 {% endblock %}
