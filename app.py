@@ -8,10 +8,6 @@ from mysql.connector import Error
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_CODE', 'secret')
-# app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-# app.config['MYSQL_DATABASE_USER'] = 'root'
-# app.config['MYSQL_DATABASE_PASSWORD'] = 'Ebbs@sql.2026'
-# app.config['MYSQL_DATABASE_DB'] = 'studentportal'
 
 def get_db_connection():
     return mysql.connector.connect(
