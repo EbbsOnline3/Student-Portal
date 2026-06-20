@@ -15,11 +15,11 @@
       <div class="col-md-6 upload">
         <p>Peronal Information</p>
         <label for="inputfile" class="">Upload Image:</label>
-        <input type="file" id="inputfile" class="form-control" placeholder="Email address" required autofocus>
+        <input type="file" id="inputfile" class="form-control" placeholder="Email address" requiredo>
       </div>
       <div class="col-md-6">
         <label for="input-first-name" class="">First Name:</label>
-        <input type="text" id="input-first-name" class="form-control" placeholder="first name" required>
+        <input type="text" id="input-first-name" class="form-control" placeholder="first name" requiredo autofocus>
       </div>
       <div class="col-md-6">
         <label for="input-middle-name" class="">Middle Name:</label>
@@ -27,33 +27,33 @@
       </div>
       <div class="col-md-6">
         <label for="input-last-name" class="">Last Name:</label>
-        <input type="text" id="input-last-name" class="form-control" placeholder="Last name" required>
+        <input type="text" id="input-last-name" class="form-control" placeholder="Last name" requiredo>
       </div>
       <div class="col-md-6">
         <label for="input-email" class="">Emial:</label>
-        <input type="text" id="input-email" class="form-control" placeholder="student@gmial.com" required>
+        <input type="text" id="input-email" class="form-control" placeholder="student@gmial.com" requiredo>
       </div>
       <div class="col-md-6">
         <label for="input-date-of-birth" class="">Date of birth:</label>
-        <input type="date" id="input-date-of-birth" class="form-control" placeholder="Date of birth" required>
+        <input type="date" id="input-date-of-birth" class="form-control" placeholder="Date of birth" requiredo>
       </div>
       <div class="col-md-6 radios">
         <label for="male">Male</label>
-        <input type="radio" name="gender" id='male' class="gender" value="male" required>
+        <input type="radio" name="gender" id='male' class="gender" value="male" requiredo>
         <label for="female">Female</label>
-        <input type="radio" name="gender" id='female' class="gender" value="female" required>
+        <input type="radio" name="gender" id='female' class="gender" value="female" requiredo>
       </div>
       <div class="col-md-6">
         <label for="input-number">Phone Number:</label>
-        <input type="tel" id="input-number"  class="form-control" placeholder="+233 500 000 000" required>
+        <input type="tel" id="input-number"  class="form-control" placeholder="+233 500 000 000" requiredo>
       </div>
       <div class="col-md-6">
         <label for="input-address">Address:</label>
-        <textarea id="input-address" class="form-control" required placeholder="your address" ></textarea>
+        <textarea id="input-address" class="form-control" requiredo placeholder="your address" ></textarea>
       </div>
       <div class="col-md-6">
         <label for="region">Select Region:</label>
-        <select name="region" class="form-control" id="region" required>
+        <select name="region" class="form-control" id="region" requiredo>
           <option value="">-- Select Region --</option>
           {% for region in regions %}
             <option value="{{ region }}">
@@ -64,13 +64,13 @@
       </div>
       <div class="col-md-6">
         <label for="district">District:</label>
-        <select name="district" class="form-control" id="district" required>
+        <select name="district" class="form-control" id="district" requiredo>
           <option value="">-- Select District --</option>
         </select>
       </div>
       <div class="col-md-6">
-        <label for="input-next-of-king">Next of King:</label>
-        <input type="text" id="input-next-of-king" class="form-control" placeholder="your next of king" required>
+        <label for="input-next-of-kin">Next of King:</label>
+        <input type="text" id="input-next-of-kin" class="form-control" placeholder="your next of kin" requiredo>
       </div>
     </div>
     <!-- Academic info -->
@@ -78,7 +78,7 @@
       <p>Academic Information</p>
       <div class="col-md-12 result"> 
         <label for="wassce">Exam Score:</label>
-        <input type="number" name="wassce" class="form-control" id="wassce" placeholder="input WASSCE result" required>
+        <input type="number" name="wassce" class="form-control" id="wassce" placeholder="input WASSCE result" requiredo>
       </div>
     </div>
     <div class="submit-form">
@@ -111,5 +111,60 @@
 
   <div class="col-md-12 students-table">
     <p><b>Info!</b> All students records table</p>
+    <div class="search-area-div">
+      <form action="" method="get">
+        <div class="search-by-name-div">
+          <input type="search" name="search-by-name" class="form-control" id="search-by-name" placeholder="enter name to search">
+        </div>
+        <div class="search-by-admission-status">
+          <select name="" id="admission-status" class="form-control">
+            <option value="">-- Select Admission Status --</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </select>
+        </div>
+        <div class="search-by-gender-div">
+          <select name="gender-select" id="gender-select" class="form-control">
+            <option value="">-- Select Gender --</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+        <div class="search-by-grade-div">
+          <input type="number" max="40" min="06" class="form-control" name="search-by-grade" id="search-by-grade" placeholder="enter wassce grade">
+        </div>
+        <div class="search-div">
+          <button type="button" class="btn btn-primary" id="search-btn">Search</button>
+        </div>
+      </form>
+    </div>
+    <div class="students-details-table-div">
+      <table>
+        <thead>
+          <tr>
+            <th>SN</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Score</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Emmanuel Arthur</td>
+            <td>male</td>
+            <td>20</td>
+            <td>admitted</td>
+            <td class="view-details"><i class="fas fa-eye"></i></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="col-md-12 student-deatils-page">
+    <img src="{{ url_for('static', filename='images/default_avatar.png' or profile_image_path) }}" alt="">
   </div>
 {% endblock %}

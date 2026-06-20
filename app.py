@@ -1,6 +1,26 @@
-from flask import Flask, json, render_template, request
+import os
+from flask import Flask, jsonify, render_template, request, flash, current_app
+import json
+import mysql.connector
+from mysql.connector import Error
+
+
 
 app = Flask(__name__)
+app.secret_key = os.environ.get('SECRET_CODE', 'secret')
+# app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+# app.config['MYSQL_DATABASE_USER'] = 'root'
+# app.config['MYSQL_DATABASE_PASSWORD'] = 'Ebbs@sql.2026'
+# app.config['MYSQL_DATABASE_DB'] = 'studentportal'
+
+def get_db_connection():
+    return mysql.connector.connect(
+        host="localhost",
+        user=os.environ.get('DB_USER', 'root'),          
+        password=os.environ.get('DB_PASSWORD'),  
+        database=os.environ.get('DB_NAME')
+    )
+
 
 @app.route('/', methods = ['GET', 'POST'])
 def home():
@@ -125,19 +145,96 @@ def get_started():
 
 @app.route('/getstarted/register', methods = ['POST'])
 def register():
-    req = request.get_json()
-    firstName = req['firstName']
-    lastName = req['lastName']
-    email = req['email']
-    region = req['region']
-    district = req['district']
+    try:
+        req = request.get_json()
+        
+        
+        firstName = req['firstName']
+        middleName = req.get('middleName')
+        lastName = req['lastName']
+        email = req['email'].strip().lower()
+        dateOfBirth = req['dateOfBirth']
+        address = req['address']
+        gender = req['gender']
+        phone = req['phoneNumber']
+        region = req['region']
+        district = req['district']
+        nextOfKin = req['nextOfKin']
+        academicScore = req['academicScore']
+        
+        if firstName == '' | lastName == '':
+            flash('Fields cannot be empty', 'flash_error')
+            return
 
-    
-    return json.dumps({'message': 'successfully added'})
+        conn = get_db_connection()
+        cursor = conn.cursor()
+
+        sql = """
+            INSERT INTO student_info 
+            (first_name, middle_name, last_name, email, date_of_birth, address, 
+             gender, phone_number, region, district, next_of_kin, wassce_score, profile_image_path)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        """
+        values = (
+            firstName, middleName, lastName, email, dateOfBirth,
+            address, gender, phone, region, district, nextOfKin, academicScore
+        )
+
+        cursor.execute(sql, values)
+        conn.commit()
+        new_id = cursor.lastrowid
+
+        cursor.close()
+        conn.close()
+
+        return jsonify({
+            'success': True,
+            'message': 'Student registered successfully!',
+            'student_id': new_id
+        })
+
+    except mysql.connector.Error as e:
+        if e.errno == 1062:  # Duplicate email
+            return jsonify({
+                'success': False,
+                'message': 'Email already registered.'
+            }), 409
+        return jsonify({
+            'success': False,
+            'message': f'Database error: {str(e)}'
+        }), 500
+
+    except KeyError as e:
+        flash('Error')
+        return jsonify({
+            'success': False,
+            'message': f'Missing field: {str(e)}'
+        }), 400
+
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'message': f'Server error: {str(e)}'
+        }), 500
 
 @app.route('/getstarted/student_detail', methods = ['GET','POST'])
 def student_detail():
     return render_template('students.html')
+
+@app.route('/getstarted/register/profile', methods = ['POST'])
+def profile():
+    profile_image = request.files['file']
+    if profile_image:
+        flash('Success')
+    else:
+        flash('Error')
+    # profile_image_path = os.path.join(current_app.root_path, 'static/images') 
+    # profile_image.save(profile_image_path)
+    # print(profile_image_path)
+    return jsonify({
+            'success': True,
+            'message': 'Student registered successfully!',
+        })
 
 
 if __name__ == '__main__':

@@ -151,12 +151,22 @@ a.navbar-brand{
 }
 
 .upload input{
-  width: 50%;
+  width: 49%;
 }
 
 .radios{
   width: 50%;
-  margin-top: 40px;
+  margin-top: 20px;
+}
+
+.radios label{
+  font-size: 2.5rem;
+}
+
+#male, #female{
+  width: 15px;
+  height: 15px;
+  accent-color: ;
 }
 
 .col-md-6 #input-address{
@@ -193,6 +203,7 @@ a.navbar-brand{
 }
 
 .col-md-12.result{
+  width: 100%;
   padding: 0;
 } 
 
@@ -230,60 +241,100 @@ a.navbar-brand{
     margin-top: 10px;
   }
 
+  .radios label{
+    font-size: 1.7rem;
+  }
+
+  #male, #female{
+    width: 12px;
+    height: 12px;
+  }
+
+  .submit-form button{
+    width: 50%;
+  }
+
   .flash_success, .flash_error{
     font-size: 1.5rem;
   }
 }
 
 
+/* Student table styles */
+.students-table p{
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  font-size: 2rem;/*rgb(49, 155, 241)*/
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px 5px;
+}
 
-
-
-/* .sidenav{
-  display: flex;
-  flex-direction: column;
-  border-right: 5px solid #0f0f0f;
+.students-details-table-div table{
+  width: 100%;
   padding: 10px;
-  height: 70vh;
-  justify-content: center;
-  align-items: center;
-}
-
-.side-nav-links{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.ssidenav > div{
-  margin-left: -20px;
-}
-
-.sidenav a{
-  color: #34325E;
+  text-align: center;
+  border-collapse: collapse;
   font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-  text-decoration: none;
-  transition: color 0.3s ease;
 }
 
-.sidenav a:hover{
-  color: #0f0f0f;
-  transition: color 0.3s ease;
+.students-details-table-div table th{
+  text-align: center;
 }
 
-.sidenav .side-active{
-  color: #abc;
-  text-decoration: underline;
-  transition: color 0.3s ease;
+
+.students-details-table-div table, td, th{
+  border: 2px solid;
+  border-collapse: collapse;
 }
 
-.main{
-  overflow: auto;
-  padding: 20px;
-  height: 100vh;
-} */
+.search-area-div form{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+    gap: 10px;
+}
+
+.search-area-div form > div{
+    width: 100%;
+  }
+
+.search-div button{
+  width: 100%;
+}
+
+.fa-eye{
+  cursor: pointer;
+}
+
+@media screen and (max-width: 968px){
+  .students-details-table-div table{
+    font-size: 1.2rem;
+  }
+  .students-table p{
+    font-size: 1.5rem;
+  }
+
+  .search-area-div form{
+    font-size: small;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .search-area-div form > div{
+    width: 100%;
+  }
+
+  .search-div button{
+    font-size: 2.1rem;
+    padding: 10px 15px;
+  }
+}
+
+
+
+
 
 .flash_success{
   color: #155724;
@@ -331,3 +382,48 @@ footer.footer, nav.navbar{
 .footer p{
   color: var(--text-color);
 }
+/* .sidenav{
+  display: flex;
+  flex-direction: column;
+  border-right: 5px solid #0f0f0f;
+  padding: 10px;
+  height: 70vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.side-nav-links{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ssidenav > div{
+  margin-left: -20px;
+}
+
+.sidenav a{
+  color: #34325E;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.sidenav a:hover{
+  color: #0f0f0f;
+  transition: color 0.3s ease;
+}
+
+.sidenav .side-active{
+  color: #abc;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.main{
+  overflow: auto;
+  padding: 20px;
+  height: 100vh;
+} */

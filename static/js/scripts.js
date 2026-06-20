@@ -4,6 +4,7 @@ window.onload = function() {
     })
 
     $('.students-table').hide();
+    $('.student-deatils-page').hide();
     
     $('.form-signin').submit(function(e){
       e.preventDefault();
@@ -21,9 +22,10 @@ window.onload = function() {
       let address = $('#input-address').val()
       let region = $('#region').val()
       let district = $('#district').val()
-      let nextOfKing = $('#input-next-of-king').val()
+      let nextOfKin = $('#input-next-of-kin').val()
       let academicScore = $('#wassce').val()
 
+      console.log(firstName, middleName, lastName, email, dateOfBirth, gender, address, phoneNumber, region, district, nextOfKin, academicScore)
       
       $.ajax({
         url: '/getstarted/register',
@@ -39,7 +41,7 @@ window.onload = function() {
           address: address,
           region: region,
           district: district,
-          nextOfKing: nextOfKing,
+          nextOfKin: nextOfKin,
           academicScore: academicScore
         }),
         contentType: 'application/json; charset=utf-8',
@@ -50,16 +52,49 @@ window.onload = function() {
           console.log('done')
         },
         error: function(status, error) {
-          console.log('Error adding word: ' + error + status);
+          console.log('Error adding student: ' + error + status);
         }
       })
       
     })
 
-    // $('.form-signin').submit(function(e){
-    //   e.preventDefault();
-    //   console.log('Form submitted')
-    // })
+    // Sending image
+    $('.form-signin').submit(function(e){
+      e.preventDefault();
+      let data = new FormData();
+      data.append('file', $('#inputfile')[0].files[0]);
+      
+      console.log(data)
+      
+
+      
+      $.ajax({
+        url: '/getstarted/register/profile',
+        method: 'POST',
+        data: data,
+        encType: 'multipart/form-data',
+        processData: false,
+        contentType: false,
+        success: function(response) {
+          $('.form-signin').hide();
+          $('.students-table').show();
+          console.log('done')
+        },
+        error: function(status, error) {
+          console.log('Error adding student: ' + error + status);
+        }
+      })
+      
+    })
+
+    $('body').keydown(function(e){
+      console.log(e.key)
+      if (e.key === ("Enter")) {
+        $('#submit-btn').click();
+      }
+    
+    })
+  
 }
 
 
